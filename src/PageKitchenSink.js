@@ -3,8 +3,8 @@ import {
   Alert,
   Card,
   Container,
-  Icon,
-  Link,
+  // Icon,
+  // Link,
   Row,
   Col,
   Button,
@@ -13,7 +13,7 @@ import {
   NavBar, Header
 } from 'cwds-components';
 
-import Btn from 'cwds-components/dist/components/Button';
+// import Btn from 'cwds-components/Button';
 
 const dismissAlert = () => {
   alert('You closed the alert!');
