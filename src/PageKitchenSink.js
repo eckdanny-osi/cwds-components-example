@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import {
   Alert,
   Card,
@@ -51,63 +52,65 @@ class KitchenSink extends Component {
         <Row>
           <Col className="col-md-4">
         <Nav vertical>
+
           <NavItem>
-            <NavLink href="#">Screener Summary</NavLink>
+            {/* <NavLink>Screener Summary</NavLink> */}
+            <Link to="/nav">NAV</Link>
           </NavItem>
           <NavItem>
-            <NavLink href="#">Allegations & Disposition</NavLink>
+            <NavLink>Allegations & Disposition</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="#">People & Roles</NavLink>
+            <NavLink>People & Roles</NavLink>
             <Nav vertical>
-              <NavItem href="#">Chris Cambell</NavItem>
-              <NavItem href="#">Katie Cambell</NavItem>
+              <NavItem>Chris Cambell</NavItem>
+              <NavItem>Katie Cambell</NavItem>
             </Nav>
           </NavItem>
           <NavItem>
-            <NavLink href="#">History of Involvement</NavLink>
+            <NavLink>History of Involvement</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="#">Relationships</NavLink>
+            <NavLink>Relationships</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="#">Contacts</NavLink>
+            <NavLink>Contacts</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="#">Risk & Safety Assessment</NavLink>
+            <NavLink>Risk & Safety Assessment</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="#">Home Assessment</NavLink>
+            <NavLink>Home Assessment</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="#">Decision</NavLink>
+            <NavLink>Decision</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink disabled href="#">Disabled Link</NavLink>
+            <NavLink disabled>Disabled Link</NavLink>
           </NavItem>
         </Nav>
 
         <hr />
 
         <ul className="list-group">
-        <a href="#" className="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+        <a className="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
 
         <li className="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-          <a href="#">Dapibus ac facilisis in</a>
+          <a>Dapibus ac facilisis in</a>
           <span className="badge badge-primary badge-pill">14</span>
         </li>
         <li className="list-group-item list-group-item-action">
           <div className="d-flex justify-content-between align-items-center">
-          <a href="#">Parent</a>
+          <a>Parent</a>
           <span className="badge badge-primary badge-pill">14</span>
           </div>
           <ul className="list-group">
           <li className="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-          <a href="#">Dapibus ac facilisis in</a>
+          <a>Dapibus ac facilisis in</a>
           <span className="badge badge-primary badge-pill">14</span>
         </li>
         <li className="list-group-item list-group-item-action">
-          <a href="#">FOOOOOO</a>
+          <a>FOOOOOO</a>
           <span className="badge badge-primary badge-pill">14</span>
         </li>
           </ul>
@@ -128,6 +131,17 @@ class KitchenSink extends Component {
 
           </Col>
           <Col className="col-md-8">
+
+          <div className="dropdown">
+  <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a className="dropdown-item">Action</a>
+    <a className="dropdown-item">Another action</a>
+    <a className="dropdown-item">Something else here</a>
+  </div>
+</div>
 
             <h2>Alerts</h2>
             {/* <Alert type="primary"><strong>Primary</strong> Keep Calm and Carry On!</Alert> */}

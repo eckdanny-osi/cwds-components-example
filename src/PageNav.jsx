@@ -7,20 +7,20 @@ const PageNav = () => (
     <h1 class="display-3">Hey, there.</h1>
     <p>Some perfectly centered content goes here</p>
     <p class="lead">
-        <a class="btn btn-outline-secondary btn-lg" href="#" role="button">Learn more</a>
+        <a class="btn btn-outline-secondary btn-lg" href role="button">Learn more</a>
     </p>
   </div>
 <nav class="navbar navbar-light navbar-expand-lg">
   <div class="container">
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href>Brand</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
       </button>
       <div class="navbar-collapse collapse" id="navbarNav">
           <ul class="navbar-nav">
-              <li class="nav-item"><a href="#" class="nav-link">Link</a></li>
-              <li class="nav-item"><a href="#" class="nav-link">Link</a></li>
-              <li class="nav-item"><a href="#" class="nav-link">Link</a></li>
+              <li class="nav-item"><a href class="nav-link">Link</a></li>
+              <li class="nav-item"><a href class="nav-link">Link</a></li>
+              <li class="nav-item"><a href class="nav-link">Link</a></li>
           </ul>
           <ul class="navbar-nav ml-auto">
               <li class="nav-item"><a href="#modal1" data-toggle="modal" class="nav-link">Modal</a></li>
@@ -133,49 +133,49 @@ const PageNav = () => (
                               <div class="card-block">
                                   <h3 class="card-title">Primary</h3>
                                   <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                  <a href="#" class="btn btn-outline-secondary">Outline</a>
+                                  <a href class="btn btn-outline-secondary">Outline</a>
                               </div>
                           </div>
                           <div class="card card-outline-primary mb-3">
                               <div class="card-block">
                                   <h3 class="card-title">Primary</h3>
                                   <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                  <a href="#" class="btn btn-outline-secondary">Outline</a>
+                                  <a href class="btn btn-outline-secondary">Outline</a>
                               </div>
                           </div>
                           <div class="card card-outline-primary mb-3">
                               <div class="card-block">
                                   <h3 class="card-title">Primary</h3>
                                   <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                  <a href="#" class="btn btn-outline-secondary">Outline</a>
+                                  <a href class="btn btn-outline-secondary">Outline</a>
                               </div>
                           </div>
                           <div class="card card-outline-primary mb-3">
                               <div class="card-block">
                                   <h3 class="card-title">Primary</h3>
                                   <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                  <a href="#" class="btn btn-outline-secondary">Outline</a>
+                                  <a href class="btn btn-outline-secondary">Outline</a>
                               </div>
                           </div>
                           <div class="card card-outline-primary mb-3">
                               <div class="card-block">
                                   <h3 class="card-title">Primary</h3>
                                   <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                  <a href="#" class="btn btn-outline-secondary">Outline</a>
+                                  <a href class="btn btn-outline-secondary">Outline</a>
                               </div>
                           </div>
                           <div class="card card-outline-primary mb-3">
                               <div class="card-block">
                                   <h3 class="card-title">Primary</h3>
                                   <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                  <a href="#" class="btn btn-outline-secondary">Outline</a>
+                                  <a href class="btn btn-outline-secondary">Outline</a>
                               </div>
                           </div>
                           <div class="card card-outline-primary mb-3">
                               <div class="card-block">
                                   <h3 class="card-title">Primary</h3>
                                   <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                  <a href="#" class="btn btn-outline-secondary">Outline</a>
+                                  <a href class="btn btn-outline-secondary">Outline</a>
                               </div>
                           </div>
                       </div>
@@ -201,21 +201,21 @@ const PageNav = () => (
                       <div class="card-body">
                           <h3 class="card-title">Card</h3>
                           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                          <a href="#" class="btn btn-outline-secondary">Outline</a>
+                          <a href class="btn btn-outline-secondary">Outline</a>
                       </div>
                   </div>
                   <div class="card bg-faded border-0 mb-3">
                       <div class="card-body">
                           <h3 class="card-title">Ad</h3>
                           <p class="card-text">Display supporters and advertisements here.</p>
-                          <a href="#" class="btn btn-outline-secondary">C-T-A</a>
+                          <a href class="btn btn-outline-secondary">C-T-A</a>
                       </div>
                   </div>
                   <div class="card bg-faded border-0 mb-3">
                       <div class="card-body">
                           <h3 class="card-title">Card</h3>
                           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                          <a href="#" class="btn btn-outline-secondary">Outline</a>
+                          <a href class="btn btn-outline-secondary">Outline</a>
                       </div>
                   </div>
               </div>
@@ -228,28 +228,28 @@ const PageNav = () => (
       <div class="row">
           <div class="col-md-3 col-sm-6 pl-0">
               <ul class="nav flex-column">
-                  <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-                  <li class="nav-item"><a href="#" class="nav-link">Services</a></li>
-                  <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
-                  <li class="nav-item"><a href="#" class="nav-link">Team</a></li>
+                  <li class="nav-item"><a href class="nav-link">About</a></li>
+                  <li class="nav-item"><a href class="nav-link">Services</a></li>
+                  <li class="nav-item"><a href class="nav-link">Features</a></li>
+                  <li class="nav-item"><a href class="nav-link">Team</a></li>
               </ul>
           </div>
           <div class="col-md-3 col-sm-6 pl-0">
               <ul class="nav flex-column">
-                  <li class="nav-item"><a href="#" class="nav-link">More</a></li>
-                  <li class="nav-item"><a href="#" class="nav-link">Support</a></li>
-                  <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
-                  <li class="nav-item"><a href="#" class="nav-link">Legal</a></li>
+                  <li class="nav-item"><a href class="nav-link">More</a></li>
+                  <li class="nav-item"><a href class="nav-link">Support</a></li>
+                  <li class="nav-item"><a href class="nav-link">Contact</a></li>
+                  <li class="nav-item"><a href class="nav-link">Legal</a></li>
               </ul>
           </div>
           <div class="col-md-4 ml-auto text-right">
               <small class="text-uppercase">Connect on social media</small>
               <ul class="nav justify-content-end">
-                  <li class="nav-item"><a href="#" class="nav-link pr-0"><i class="fa fa-pinterest fa-lg"></i></a></li>
-                  <li class="nav-item"><a href="#" class="nav-link pr-0"><i class="fa fa-twitter fa-lg"></i></a></li>
-                  <li class="nav-item"><a href="#" class="nav-link pr-0"><i class="fa fa-instagram fa-lg"></i></a></li>
-                  <li class="nav-item"><a href="#" class="nav-link pr-0"><i class="fa fa-facebook fa-lg"></i></a></li>
-                  <li class="nav-item"><a href="#" class="nav-link pr-0"><i class="fa fa-skype fa-lg"></i></a></li>
+                  <li class="nav-item"><a href class="nav-link pr-0"><i class="fa fa-pinterest fa-lg"></i></a></li>
+                  <li class="nav-item"><a href class="nav-link pr-0"><i class="fa fa-twitter fa-lg"></i></a></li>
+                  <li class="nav-item"><a href class="nav-link pr-0"><i class="fa fa-instagram fa-lg"></i></a></li>
+                  <li class="nav-item"><a href class="nav-link pr-0"><i class="fa fa-facebook fa-lg"></i></a></li>
+                  <li class="nav-item"><a href class="nav-link pr-0"><i class="fa fa-skype fa-lg"></i></a></li>
               </ul>
           </div>
           <div class="col-12 text-right small">
@@ -269,31 +269,31 @@ const PageNav = () => (
           <div class="modal-body">
 
               <div class="form-group row">
-                  <label for="example-text-input" class="col-2 col-form-label">Text</label>
+                  <label htmlFor="example-text-input" class="col-2 col-form-label">Text</label>
                   <div class="col-10">
                       <input class="form-control" type="text" value="Mike McDonald" id="example-text-input" />
                   </div>
               </div>
               <div class="form-group row">
-                  <label for="example-search-input" class="col-2 col-form-label">Search</label>
+                  <label htmlFor="example-search-input" class="col-2 col-form-label">Search</label>
                   <div class="col-10">
                       <input class="form-control" type="search" value="How to responsive design" id="example-search-input" />
                   </div>
               </div>
               <div class="form-group row">
-                  <label for="example-email-input" class="col-2 col-form-label">Email</label>
+                  <label htmlFor="example-email-input" class="col-2 col-form-label">Email</label>
                   <div class="col-10">
                       <input class="form-control" type="email" value="email@example.com" id="example-email-input" />
                   </div>
               </div>
               <div class="form-group row">
-                  <label for="example-url-input" class="col-2 col-form-label">URL</label>
+                  <label htmlFor="example-url-input" class="col-2 col-form-label">URL</label>
                   <div class="col-10">
                       <input class="form-control" type="url" value="http://codeply.com" id="example-url-input" />
                   </div>
               </div>
               <div class="form-group row">
-                  <label for="example-tel-input" class="col-2 col-form-label">Phone</label>
+                  <label htmlFor="example-tel-input" class="col-2 col-form-label">Phone</label>
                   <div class="col-10">
                       <input class="form-control" type="tel" value="1-(202)-555-5555" id="example-tel-input" />
                   </div>
