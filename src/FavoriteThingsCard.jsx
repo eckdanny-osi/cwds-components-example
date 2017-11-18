@@ -8,6 +8,13 @@ import {
 } from 'cwds-components';
 import { telephone } from 'cwds-components/utils/formatters';
 
+// const change = fn => () => {
+//   debugger;
+//   fn(name, 'checkbox' === type ? checked : value);
+// }
+
+const change = fn => ({target: { type, checked, value, name }}) => fn(name, 'checkbox' === type ? checked : value);
+
 const initialState = {
   mode: 'read',
   _saving: false,
@@ -35,26 +42,21 @@ export default class FavoriteThingsCard extends React.Component {
     super(props);
     this.state = initialState;
     this.handleCancel = this.handleCancel.bind(this);
-    this.handleSave = this.handleSave.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleSave = this.handleSave.bind(this);
   }
 
-  handleChange(event) {
-    // console.log(set);
-    // debugger;
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
+  // handleChange(event) {
+  //   const target = event.target;
+  //   const value = target.type === 'checkbox' ? target.checked : target.value;
+  //   const name = target.name;
+  //   this.setState({
+  //     model: set(this.state.model, name, value)
+  //   });
+  // }
 
-    // temp1(this.state, `model.${event.target.name}`, {foo: 'foo'})
-
-    this.setState({
-      // model: {
-      //   ...this.state.model,
-      //   [name]: value
-      // }
-      model: set(this.state.model, name, value)
-    });
+  handleChange(key, value) {
+    this.setState(set(this.state, key, value));
   }
 
   _renderReadView(...props) {
@@ -62,7 +64,6 @@ export default class FavoriteThingsCard extends React.Component {
   }
 
   _renderEditView(...props) {
-    // return <FavoriteThingsEditView {...props} {...this.state.model}/>
     return (
       <FavoriteThingsEditView
         {...props}
@@ -150,90 +151,106 @@ const FavoriteThingsEditView = ({
     isAwesome,
     tel: telNumbers
   },
-  onChange
-}) => (
-  <form>
-    <div className="form-group">
-      <label>Email</label>
-      <input
-        type="email"
-        name="email"
-        className="form-control"
-        placeholder="bob@example.com"
-        value={email}
-        onChange={onChange}
-      />
-    </div>
-    <div className="form-group">
-      <label>First Name</label>
-      <input
-        type="text"
-        className="form-control"
-        placeholder="Bob"
-        value={fname}
-        name="fname"
-        onChange={onChange}
-      />
-    </div>
-    <div className="form-check">
-      <label className="form-check-label">
+  onChange: _onChange
+}) => {
+  const onChange = change(_onChange);
+  return (
+    <form>
+      <div className="form-group">
+        <label>Email</label>
         <input
-          type="checkbox"
-          className="form-check-input"
-          checked={isAwesome}
-          name="isAwesome"
+          type="email"
+          name="model.email"
+          className="form-control"
+          placeholder="bob@example.com"
+          value={email}
           onChange={onChange}
         />
-        Awesome?
-      </label>
-    </div>
-    <label>Telephone Numbers</label>
-    {telNumbers.map(({type, value}, i, arr) => (
-      <Row key={i}>
-        <Col className="col-4">
-          <div className="form-group">
-            <input
-              type="tel"
-              className="form-control"
-              placeholder="5554443322"
-              value={value}
-              name={`tel[${i}][value]`}
-              onChange={onChange}
-            />
-          </div>
-        </Col>
-        <Col>
-          <div className="form-check form-check-inline">
-            <label className="form-check-label">
+      </div>
+      <div className="form-group">
+        <label>First Name</label>
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Bob"
+          value={fname}
+          name="model.fname"
+          onChange={onChange}
+        />
+      </div>
+      <div className="form-check">
+        <label className="form-check-label">
+          <input
+            type="checkbox"
+            className="form-check-input"
+            checked={isAwesome}
+            name="model.isAwesome"
+            onChange={onChange}
+          />
+          Awesome?
+        </label>
+      </div>
+      <label>Telephone Numbers</label>
+      {telNumbers.map(({type, value}, i, arr) => (
+        <Row key={i}>
+          <Col className="col-4">
+            <div className="form-group">
               <input
-                className="form-check-input"
-                type="radio"
-                name={`tel[${i}][type]`}
-                value="mobile"
-                checked={'mobile' === type}
+                type="tel"
+                className="form-control"
+                placeholder="5554443322"
+                value={value}
+                name={`model.tel[${i}][value]`}
                 onChange={onChange}
               />
-              Mobile
-            </label>
-          </div>
-          <div className="form-check form-check-inline">
-            <label className="form-check-label">
-              <input
-                className="form-check-input"
-                type="radio"
-                name={`tel[${i}][type]`}
-                value="work"
-                checked={'work' === type}
-                onChange={onChange}
-              />
-              Work
-            </label>
-          </div>
-        </Col>
-      </Row>
-    ))}
-  </form>
-);
+            </div>
+          </Col>
+          <Col>
+            <div className="form-check form-check-inline">
+              <label className="form-check-label">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name={`model.tel[${i}][type]`}
+                  value="mobile"
+                  checked={'mobile' === type}
+                  onChange={onChange}
+                />
+                Mobile
+              </label>
+            </div>
+            <div className="form-check form-check-inline">
+              <label className="form-check-label">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name={`model.tel[${i}][type]`}
+                  value="work"
+                  checked={'work' === type}
+                  onChange={onChange}
+                />
+                Work
+              </label>
+            </div>
+          </Col>
+          <Col>
+            <Button
+              type="light"
+              onClick={() => _onChange('model.tel', arr.filter((_, j) => i !== j))}
+            >
+              <Icon name="trash" />
+            </Button>
+          </Col>
+        </Row>
+      ))}
+      <Button
+        className="btn-block"
+        type="success"
+        onClick={() => _onChange('model.tel', [...telNumbers, { type: '', value: '' }])}
+      >Add Telephone</Button>
+    </form>
+  );
+};
 
 const FavoriteThingsReadView = ({
   email,
