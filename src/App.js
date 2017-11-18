@@ -15,7 +15,6 @@ const App = () => (
       {/* <Route path="/kitchen-sink" render={() => <h2>sink</h2>} /> */}
       <Route path="/home" component={Home} />
       <Route path="/nav" component={PageNav} />
-      <Route path='*' component={Page404} />
     </div>
   </Router>
 );
