@@ -17,9 +17,11 @@ const change = fn => ({target: { type, checked, value, name }}) => fn(name, 'che
 
 const initialState = {
   mode: 'read',
-  _saving: false,
-  _dirty: false,
-  _invalid: false,
+  form: {
+    _saving: false,
+    _dirty: false,
+    _invalid: false,
+  },
   model: {
     email: 'danny.eck@osi.ca.gov',
     fname: 'Danny',
@@ -85,11 +87,11 @@ export default class FavoriteThingsCard extends React.Component {
   }
 
   handleSave() {
-    this.setState({ _saving: true })
+    this.setState(set(this.state, 'form._saving', true));
     setTimeout(() => {
       this.setState({
         mode: 'read',
-        _saving: false
+        form: { ...this.state.form, _saving: false }
       });
     }, 1000);
   }
@@ -119,7 +121,7 @@ export default class FavoriteThingsCard extends React.Component {
               size="sm"
               onClick={this.handleCancel}
               className={'edit' !== this.state.mode ? 'd-none' : false}
-              disabled={this.state._saving}
+              disabled={this.state.form._saving}
               >Cancel</Button>
             {' '}
             <Button
@@ -127,9 +129,9 @@ export default class FavoriteThingsCard extends React.Component {
               size="sm"
               onClick={this.handleSave}
               className={'edit' !== this.state.mode ? 'd-none' : false}
-              disabled={this.state._saving}
+              disabled={this.state.form._saving}
               >{
-                !this.state._saving
+                !this.state.form._saving
                   ? 'Save'
                   : <span>
                       <Icon name='circle-o-notch' spin />{' '}
