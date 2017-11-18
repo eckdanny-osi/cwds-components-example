@@ -1,17 +1,18 @@
 import * as React from 'react';
+import set from 'lodash.set';
 import {
   Button,
   Card, CardHeader, CardBody, CardFooter,
   Container, Row, Col,
-  Icon,
-  utils
+  Icon
 } from 'cwds-components';
-
-
+import { telephone } from 'cwds-components/utils/formatters';
 
 const initialState = {
   mode: 'read',
   _saving: false,
+  _dirty: false,
+  _invalid: false,
   model: {
     email: 'danny.eck@osi.ca.gov',
     fname: 'Danny',
@@ -24,7 +25,7 @@ const initialState = {
   }
 };
 
-class FavoriteThingsCard extends React.Component {
+export default class FavoriteThingsCard extends React.Component {
 
   static defaultProps = {};
 
@@ -35,6 +36,25 @@ class FavoriteThingsCard extends React.Component {
     this.state = initialState;
     this.handleCancel = this.handleCancel.bind(this);
     this.handleSave = this.handleSave.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    // console.log(set);
+    // debugger;
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    // temp1(this.state, `model.${event.target.name}`, {foo: 'foo'})
+
+    this.setState({
+      // model: {
+      //   ...this.state.model,
+      //   [name]: value
+      // }
+      model: set(this.state.model, name, value)
+    });
   }
 
   _renderReadView(...props) {
@@ -42,7 +62,14 @@ class FavoriteThingsCard extends React.Component {
   }
 
   _renderEditView(...props) {
-    return <FavoriteThingsEditView {...props} {...this.state.model}/>
+    // return <FavoriteThingsEditView {...props} {...this.state.model}/>
+    return (
+      <FavoriteThingsEditView
+        {...props}
+        model={this.state.model}
+        onChange={this.handleChange}
+      />
+    );
   }
 
   _renderBody(...props) {
@@ -69,6 +96,7 @@ class FavoriteThingsCard extends React.Component {
   render() {
     return (
       <Card>
+
         <CardHeader className="clear-fix">
           <h3 style={{display: 'inline-block'}}>Some Card Header</h3>
           <div className="card-actions">
@@ -109,28 +137,31 @@ class FavoriteThingsCard extends React.Component {
                 }</Button>
           </div>
         </CardFooter>
+
       </Card>
     );
   }
 }
 
-export default FavoriteThingsCard;
-
 const FavoriteThingsEditView = ({
-  email,
-  fname,
-  isAwesome,
-  tel: telNumbers
+  model: {
+    email,
+    fname,
+    isAwesome,
+    tel: telNumbers
+  },
+  onChange
 }) => (
   <form>
     <div className="form-group">
       <label>Email</label>
       <input
         type="email"
+        name="email"
         className="form-control"
         placeholder="bob@example.com"
         value={email}
-        onChange={() => {}}
+        onChange={onChange}
       />
     </div>
     <div className="form-group">
@@ -140,7 +171,8 @@ const FavoriteThingsEditView = ({
         className="form-control"
         placeholder="Bob"
         value={fname}
-        onChange={() => {}}
+        name="fname"
+        onChange={onChange}
       />
     </div>
     <div className="form-check">
@@ -148,15 +180,16 @@ const FavoriteThingsEditView = ({
         <input
           type="checkbox"
           className="form-check-input"
-          value={isAwesome}
-          onChange={() => {}}
+          checked={isAwesome}
+          name="isAwesome"
+          onChange={onChange}
         />
         Awesome?
       </label>
     </div>
     <label>Telephone Numbers</label>
-    {telNumbers.map(({type, value}) => (
-      <Row key={value}>
+    {telNumbers.map(({type, value}, i, arr) => (
+      <Row key={i}>
         <Col className="col-4">
           <div className="form-group">
             <input
@@ -164,7 +197,8 @@ const FavoriteThingsEditView = ({
               className="form-control"
               placeholder="5554443322"
               value={value}
-              onChange={() => {}}
+              name={`tel[${i}][value]`}
+              onChange={onChange}
             />
           </div>
         </Col>
@@ -174,11 +208,10 @@ const FavoriteThingsEditView = ({
               <input
                 className="form-check-input"
                 type="radio"
-                name="exampleRadios"
-                id="exampleRadios1"
-                value="work"
-                checked
-                onChange={() => {}}
+                name={`tel[${i}][type]`}
+                value="mobile"
+                checked={'mobile' === type}
+                onChange={onChange}
               />
               Mobile
             </label>
@@ -188,10 +221,10 @@ const FavoriteThingsEditView = ({
               <input
                 className="form-check-input"
                 type="radio"
-                name="exampleRadios"
-                id="exampleRadios2"
+                name={`tel[${i}][type]`}
                 value="work"
-                onChange={() => {}}
+                checked={'work' === type}
+                onChange={onChange}
               />
               Work
             </label>
@@ -218,30 +251,12 @@ const FavoriteThingsReadView = ({
       <Row><Col className="col-3">Is Awesome?</Col><Col>{isAwesome ? 'Yes' : 'No'}</Col></Row>
       <br />
       <h4>Telephone</h4>
-      {telNumbers.map(({type, value}, i, arr) => {
+      {telNumbers && telNumbers.map(({type, value}, i, arr) => {
         return (
-          <Row key={value}><Col className="col-3">{type}</Col><Col>{utils.telephoneFormatter(value)}</Col></Row>
+          <Row key={value}><Col className="col-3">{type}</Col><Col>{telephone(value)}</Col></Row>
         );
       })}
 
     </Container>
   );
 };
-
-
-/*
-email:
-"danny.eck@osi.ca.gov"
-fname:
-"Danny"
-isAwesome:
-true
-lname:
-"Eck"
-tel:
-Array[2]
-0:
-{…}
-1:
-{…}
-*/
